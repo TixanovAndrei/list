@@ -54,6 +54,14 @@ void push(int data, Node **head, LIST_ERR *err)
     }
     
     Node *elem = (Node*)malloc(sizeof(Node));
+
+    if (elem == NULL) {
+        fprintf(stderr, "Not enough memory\n");
+		if (err != NULL) {
+		    *err = MALLOC;
+        }
+        return;
+    }
     
     elem -> value = data;
     elem -> next = *head;
@@ -117,6 +125,14 @@ void pushBack(Node *head, int data, LIST_ERR *err)
     Node *last = getLast (head);
     
     Node *elem = (Node*) malloc(sizeof(Node));
+
+    if (elem == NULL) {
+        fprintf(stderr, "Not enough memory\n");
+		if (err != NULL) {
+		    *err = MALLOC;
+        }
+        return;
+    }
     
     elem -> value = data;
     elem -> next = NULL;
