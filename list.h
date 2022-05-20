@@ -31,4 +31,6 @@ int popBack (Node **head, LIST_ERR *err);
 
 void deleteList(Node **head, LIST_ERR *err);
 
+Node *search(Node **head, int k, LIST_ERR *err);
+
 #endif

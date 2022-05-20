@@ -183,3 +183,31 @@ int popBack (Node **head, LIST_ERR *err)
 
     return val;
 }
+
+Node *search(Node **head, int k, LIST_ERR *err)
+{
+    if (head == NULL) {
+        fprintf(stderr, "Invalid argument: head\n");
+		if (err != NULL) {
+		    *err = INVARG;
+        }
+        return NULL;
+    }
+    
+    Node* node = (*head);
+    
+    if(k != 0) {
+        if (node -> next == NULL) {
+        fprintf(stderr, "Invalid argument: k\n");
+		if (err != NULL) {
+		    *err = INVARG;
+        }
+        return NULL;
+        }
+        node = search(&(node -> next), k - 1, err); 
+    } 
+    else {
+        return node;
+    }
+}
+
