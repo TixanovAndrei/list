@@ -61,7 +61,43 @@ int main()
         push(i, &list, &err);
     }
 
-    
+    pushBack(NULL, 11, &err);
+	if (err != INVARG)
+		fprintf(stdout, "Test_4.1\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_4.1\t->\tPASSED\n");
+
+	pushBack(list, 11, &err);
+	if (err != SUCCESS)
+		fprintf(stdout, "Test_4.2\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_4.2\t->\tPASSED\n");
+
+	for (i = 12; i < 16; i++) {
+		pushBack(list, i, &err);
+	}
+
+	popBack(NULL, &err);
+	if (err != INVARG)
+		fprintf(stdout, "Test_5.1\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_5.1\t->\tPASSED\n");
+
+	for (i = 0; i < 14; i++) {
+		n = popBack(&list, &err);
+		printf("%d ", n);
+	}
+	printf("\n");
+	if (err != SUCCESS)
+		fprintf(stdout, "Test_5.2\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_5.2\t->\tPASSED\n");
+
+	popBack(&list, &err);
+	if (err != HEAD)
+		fprintf(stdout, "Test_5.3\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_5.3\t->\tPASSED\n");
 
     return 0;
 }
