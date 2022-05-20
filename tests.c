@@ -111,5 +111,31 @@ int main()
 	else
 		fprintf(stdout, "Test_6.2\t->\tPASSED\n");
 
+	list = create(1, &err);
+
+	for (i = 2; i <= 5; i++) {
+		pushBack(list, i, &err);
+	}
+
+	search(NULL, 2, &err);
+	if (err != INVARG)
+		fprintf(stdout, "Test_7.1\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_7.1\t->\tPASSED\n");
+
+	search(&list, 6, &err);
+	if (err != NOTEXIST)
+		fprintf(stdout, "Test_7.2\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_7.2\t->\tPASSED\n");
+
+	search(&list, 3, &err);
+	if (err != SUCCESS)
+		fprintf(stdout, "Test_7.3\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_7.3\t->\tPASSED\n");
+
+	deleteList(&list, &err);
+
     return 0;
 }

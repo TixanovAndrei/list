@@ -33,6 +33,7 @@ void deleteList(Node **head, LIST_ERR *err)
     }
     
     Node* prev = NULL;
+    
     while ((*head)->next) {
         prev = (*head);
         (*head) = (*head)->next;
@@ -198,15 +199,19 @@ Node *search(Node **head, int k, LIST_ERR *err)
     
     if(k != 0) {
         if (node -> next == NULL) {
-        fprintf(stderr, "Invalid argument: k\n");
+            fprintf(stderr, "Invalid argument: k\n");
 		if (err != NULL) {
-		    *err = INVARG;
+		    *err = NOTEXIST;
         }
         return NULL;
         }
-        node = search(&(node -> next), k - 1, err); 
+        node = search(&(node -> next), k - 1, err);
+
+        return node;
     } 
     else {
+        *err = SUCCESS;
+
         return node;
     }
 }

@@ -9,6 +9,7 @@ struct Node{
 typedef struct Node Node;
 
 typedef enum {
+    NOTEXIST,   
     HEAD,
     INVARG,
     SUCCESS,
