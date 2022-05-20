@@ -99,5 +99,17 @@ int main()
 	else
 		fprintf(stdout, "Test_5.3\t->\tPASSED\n");
 
+    deleteList(NULL, &err);
+	if (err != INVARG)
+		fprintf(stdout, "Test_6.1\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_6.1\t->\tPASSED\n");
+	
+	deleteList(&list, &err);
+	if (err != SUCCESS)
+		fprintf(stdout, "Test_6.2\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_6.2\t->\tPASSED\n");
+
     return 0;
 }
