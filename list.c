@@ -95,6 +95,37 @@ int pop(Node **head, LIST_ERR *err)
     return val;
 }
 
+Node *getLast(Node *head)
+{
+    while (head -> next) {
+        head = head -> next;
+    }
+
+    return(head);
+}
+
+void pushBack(Node *head, int data, LIST_ERR *err)
+{
+    if (head == NULL) {
+        fprintf(stderr, "Invalid argument: head\n");
+		if (err != NULL) {
+		    *err = INVARG;
+        }
+        return;
+    }
+    
+    Node *last = getLast (head);
+    
+    Node *elem = (Node*) malloc(sizeof(Node));
+    
+    elem -> value = data;
+    elem -> next = NULL;
+    last -> next = elem;
+
+    *err = SUCCESS;  
+}
+
+
 int main() {
     return 0;
 }
