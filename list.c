@@ -43,6 +43,58 @@ void deleteList(Node **head, LIST_ERR *err)
     *err = SUCCESS;
 }
 
+void push(int data, Node **head, LIST_ERR *err)
+{    
+    if (head == NULL) {
+        fprintf(stderr, "Invalid argument: head\n");
+		if (err != NULL) {
+		    *err = INVARG;
+        }
+        return;
+    }
+    
+    Node *elem = (Node*)malloc(sizeof(Node));
+    
+    elem -> value = data;
+    elem -> next = *head;
+
+    (*head) = elem;
+
+    *err = SUCCESS;
+}
+
+int pop(Node **head, LIST_ERR *err)
+{
+    if (head == NULL) {
+        fprintf(stderr, "Invalid argument: head\n");
+		if (err != NULL) {
+		    *err = INVARG;
+        }
+        return -1;
+    }
+
+    if ((*head)->next == NULL) {
+        fprintf(stderr, "Impossible to remove head element\n");
+		if (err != NULL) {
+		    *err = HEAD;
+        }
+        return -1;
+    }
+
+    Node* prev = NULL;
+    int val = 0;
+    
+    prev = (*head);
+    val = prev -> value;
+    *(head) = (*head) -> next;
+    
+    free(prev);
+
+    *err = SUCCESS;
+
+    return val;
+}
+
 int main() {
     return 0;
 }
