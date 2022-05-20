@@ -125,7 +125,45 @@ void pushBack(Node *head, int data, LIST_ERR *err)
     *err = SUCCESS;  
 }
 
+Node *getPenult (Node* head)
+{
+    Node* tmp = head -> next;
+    while (tmp -> next) {
+        head = head -> next;
+        tmp = tmp -> next;
+    }
 
-int main() {
-    return 0;
+    return head;
+}
+
+int popBack (Node **head, LIST_ERR *err)
+{
+    if (head == NULL) {
+        fprintf(stderr, "Invalid argument: head\n");
+		if (err != NULL) {
+		    *err = INVARG;
+        }
+        return -1;
+    }
+    
+    if ((*head) -> next == NULL) {
+        fprintf(stderr, "Impossible to remove head element\n");
+		if (err != NULL) {
+		    *err = HEAD;
+        }
+        return -1;
+    }
+    
+    Node *last = NULL;
+    int val = 0;
+
+    last = getPenult (*head);
+
+    val = last -> value;
+    free (last -> next);
+    last -> next = NULL;
+
+    *err = SUCCESS;
+
+    return val;
 }
