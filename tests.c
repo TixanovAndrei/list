@@ -135,7 +135,26 @@ int main()
 	else
 		fprintf(stdout, "Test_7.3\t->\tPASSED\n");
 
+	find(NULL, 2, &err);
+	if (err != INVARG)
+		fprintf(stdout, "Test_8.1\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_8.1\t->\tPASSED\n");
+
+	find(&list, 6, &err);
+	if (err != NOTEXIST)
+		fprintf(stdout, "Test_8.2\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_8.2\t->\tPASSED\n");
+
+	find(&list, 3, &err);
+	if (err != SUCCESS)
+		fprintf(stdout, "Test_8.3\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_8.3\t->\tPASSED\n");
+
 	deleteList(&list, &err);
+
 
     return 0;
 }

@@ -34,4 +34,6 @@ void deleteList(Node **head, LIST_ERR *err);
 
 Node *search(Node **head, int k, LIST_ERR *err);
 
+Node *find(Node** head, int data, LIST_ERR *err);
+
 #endif

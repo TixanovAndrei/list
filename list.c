@@ -214,5 +214,34 @@ Node *search(Node **head, int k, LIST_ERR *err)
 
         return node;
     }
+
+Node *find(Node** head, int data, LIST_ERR *err)
+{
+        if (head == NULL) {
+        fprintf(stderr, "Invalid argument: head\n");
+		if (err != NULL) {
+		    *err = INVARG;
+        }
+        return NULL;
+    }
+    Node *node = (*head);
+    
+    while (node -> value != data) {
+        if (node -> next == NULL){
+            printf("Element with value: ");
+            printf("%d", data);
+            printf(" doesn't exist\n");
+            if (err != NULL) {
+                *err = NOTEXIST;
+            }
+            return NULL;
+        }
+        node = node -> next;
+    }
+        
+    *err = SUCCESS;
+
+    return node;
 }
+
 
